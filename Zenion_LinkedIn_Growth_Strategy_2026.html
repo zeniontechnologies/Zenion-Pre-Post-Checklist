@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenion LinkedIn Growth Strategy 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #f8fafc;
+            --color-surface: #ffffff;
+            --color-border: #e2e8f0;
+            --color-text: #1e293b;
+            --color-text-muted: #   64748b;
+            --color-primary: #0f172a;
+            --color-accent: #0284c7;
+            --color-success: #16a34a;
+            --color-error: #dc2626;
+            --color-warning: #d97706;
+            --font-body: 'Inter', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --space-4: 1rem;
+            --space-8: 2rem;
+        }
+
+        [data-theme="dark"] {
+            --color-bg: #0f172a;
+            --color-surface: #1e293b;
+            --color-border: #334155;
+            --color-text: #f8fafc;
+            --color-text-muted: #94a3b8;
+            --color-primary: #38bdf8;
+            --color-accent: #38bdf8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--color-text);
+            background: var(--color-bg);
+            padding: var(--space-8) var(--space-4);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--color-surface);
+            padding: var(--space-8);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: var(--space-8);
+            border-bottom: 2px solid var(--color-border);
+            padding-bottom: var(--space-4);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.025em;
+        }
+
+        .subtitle {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        blockquote {
+            background: #f1f5f9;
+            border-left: 4px solid var(--color-accent);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            font-style: italic;
+        }
+
+        [data-theme="dark"] blockquote {
+            background: #334155;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: var(--color-border);
+            margin: 2rem 0;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin: 2rem 0 1rem 0;
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin: 1.5rem 0 0.75rem 0;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        strong {
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.875rem;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        th {
+            font-weight: 600;
+            color: var(--color-primary);
+            background: #f1f5f9;
+        }
+
+        [data-theme="dark"] th {
+            background: #334155;
+        }
+
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        [data-theme="dark"] tr:hover {
+            background: #1e293b;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: var(--font-mono);
+            margin-right: 0.25rem;
+        }
+
+        [data-theme="dark"] .tag {
+            background: #0369a1;
+            color: #e0f2fe;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            margin: 1.5rem 0;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+        }
+        
+        .checkbox-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .checkbox-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        
+        .checkbox-list input[type="checkbox"] {
+            margin-top: 0.3rem;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">🌓</button>
+    
+    <div class="container">
+        <header>
+            <h1>Zenion Technologies — LinkedIn Growth Strategy 2026</h1>
+            <div class="subtitle">Version 1.0 | Created: May 2026 | Owner: Zenion Technologies Marketing Team</div>
+        </header>
+
+        <h2>Executive Summary</h2>
+        <p>Zenion Technologies has achieved remarkable early momentum on LinkedIn — <strong>392 followers, 3,815 impressions, and +191.9% follower growth</strong> in just 30 days. The algorithm is starting to respond. However, engagement depth (comments, reposts) is near-zero, which caps our potential reach. This document is the complete playbook to fix that and scale systematically.</p>
+
+        <p><strong>The three biggest wins to achieve immediately:</strong></p>
+        <ol>
+            <li>Drive comments on every post with strong CTAs</li>
+            <li>Activate the team engagement ritual in the first 60 minutes of every post</li>
+            <li>Post consistently on Tuesday–Wednesday–Thursday every week without gaps</li>
+        </ol>
+
+        <hr>
+
+        <h2>Part 1: Current State — Where We Stand</h2>
+        <h3>Page Metrics (Apr 9 – May 8, 2026)</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                    <th>Trend</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Total Followers</td>
+                    <td><strong>392</strong></td>
+                    <td>+289 new in 30 days (+191.9%)</td>
+                </tr>
+                <tr>
+                    <td>Post Impressions</td>
+                    <td><strong>3,815</strong></td>
+                    <td>+1,373%</td>
+                </tr>
+                <tr>
+                    <td>Reactions</td>
+                    <td><strong>32</strong></td>
+                    <td>+166.7%</td>
+                </tr>
+                <tr>
+                    <td>Comments</td>
+                    <td><strong>1</strong></td>
+                    <td>0% growth — Critical problem</td>
+                </tr>
+                <tr>
+                    <td>Reposts</td>
+                    <td><strong>0</strong></td>
+                    <td>Flat — Critical problem</td>
+                </tr>
+                <tr>
+                    <td>Page Views</td>
+                    <td><strong>276</strong></td>
+                    <td>+70.4%</td>
+                </tr>
+                <tr>
+                    <td>Unique Visitors</td>
+                    <td><strong>98</strong></td>
+                    <td>+127.9%</td>
+                </tr>
+                <tr>
+                    <td>Search Appearances</td>
+                    <td><strong>71</strong></td>
+                    <td>+7.6%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Post Performance Breakdown</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Post</th>
+                    <th>Type</th>
+                    <th>Impressions</th>
+                    <th>Clicks</th>
+                    <th>CTR</th>
+                    <th>Reactions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Future of Industrial Intelligence</td>
+                    <td>Text</td>
+                    <td>1,419</td>
+                    <td>15</td>
+                    <td>1.06%</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td>USB Design Considerations</td>
+                    <td>Document</td>
+                    <td>413</td>
+                    <td>131</td>
+                    <td>31.72%</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>Capacitive Touch</td>
+                    <td>Document</td>
+                    <td>380</td>
+                    <td>148</td>
+                    <td>38.95%</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>Most PCB Failures</td>
+                    <td>Video</td>
+                    <td>308</td>
+                    <td>14</td>
+                    <td>4.55%</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td>Heat Sink Design</td>
+                    <td>Document</td>
+                    <td>248</td>
+                    <td>94</td>
+                    <td>37.9%</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>System Failures / Firmware</td>
+                    <td>Text</td>
+                    <td>191</td>
+                    <td>2</td>
+                    <td>1.05%</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Battery Operated Devices</td>
+                    <td>Document</td>
+                    <td>48</td>
+                    <td>35</td>
+                    <td>72.92%</td>
+                    <td>4</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><strong>Key Insights:</strong></p>
+        <ul>
+            <li>Document/Carousel posts dominate CTR (30–72%) — our best-performing format</li>
+            <li>Text posts get highest raw impressions — best for reach and algorithm visibility</li>
+            <li>Comments and Reposts are near-zero — the single biggest gap to close</li>
+            <li>289 followers in 30 days proves the algorithm is already rewarding us</li>
+        </ul>
+
+        <hr>
+
+        <h2>Part 2: Critical Problems Identified</h2>
+        <h3>Problem 1 — Zero Comment Strategy</h3>
+        <ul>
+            <li>Only <strong>1 comment</strong> across ALL posts ever published</li>
+            <li>LinkedIn algorithm ranks comments 10x higher than reactions</li>
+            <li><strong>Fix:</strong> End every single post with a direct, specific question</li>
+        </ul>
+
+        <h3>Problem 2 — No Reposts = No Amplification</h3>
+        <ul>
+            <li><strong>0 reposts</strong> on any post — content stays locked within 392 followers</li>
+            <li><strong>Fix:</strong> Team members reshare every Zenion post to personal feed with a 1-line comment</li>
+        </ul>
+
+        <h3>Problem 3 — Posts Have No Call-to-Action</h3>
+        <ul>
+            <li>Readers consume and leave silently — no reason to engage</li>
+            <li><strong>Fix:</strong> Every post ends with "What's your experience? Drop it below."</li>
+        </ul>
+
+        <h3>Problem 4 — Inconsistent Posting</h3>
+        <ul>
+            <li>Page was nearly dead before mid-April — inconsistency resets the algorithm</li>
+            <li><strong>Fix:</strong> Minimum 3 posts per week, every week — Tuesday / Wednesday / Thursday</li>
+        </ul>
+
+        <h3>Problem 5 — No Team Engagement in First Hour</h3>
+        <ul>
+            <li>LinkedIn uses the first 60 minutes to decide how widely to distribute a post</li>
+            <li><strong>Fix:</strong> Every team member reacts + comments within 1 hour of every post</li>
+        </ul>
+
+        <h3>Problem 6 — Caption Tone is Passive</h3>
+        <ul>
+            <li>Captions read like textbook introductions with no tension or hook</li>
+            <li><strong>Fix:</strong> Start with a problem, bold statement, or counterintuitive fact</li>
+        </ul>
+
+        <h3>Problem 7 — Too Many Hashtags</h3>
+        <ul>
+            <li>Currently using 13-15 hashtags — LinkedIn recommends 3-5 maximum</li>
+            <li><strong>Fix:</strong> Exactly 5 hashtags per post — no more, no less</li>
+        </ul>
+
+        <h3>Problem 8 — No Competitor Tracking</h3>
+        <ul>
+            <li>Only 1 competitor added — flying blind on benchmarking</li>
+            <li><strong>Fix:</strong> Add 5-8 real competitors in Analytics Competitors tab</li>
+        </ul>
+
+        <h3>Problem 9 — No Personal Brand Amplification</h3>
+        <ul>
+            <li>Personal profiles have 5-10x more organic reach than company pages</li>
+            <li><strong>Fix:</strong> Founder reshares every company post with personal take same day</li>
+        </ul>
+
+        <hr>
+
+        <h2>Part 3: Posting Schedule and Timing</h2>
+        
+        <h3>TUESDAY — Hook Day</h3>
+        <ul>
+            <li><strong>Format:</strong> Text Post or Mini Carousel (3-5 slides)</li>
+            <li><strong>Best Time:</strong> 8:30 AM IST</li>
+            <li><strong>Content:</strong> Bold industry opinion, problem-first statement, hot take</li>
+            <li><strong>Why:</strong> Hits India morning + Europe early morning. USA will catch it mid-morning when the post already has engagement momentum which actually helps the algorithm show it to them</li>
+        </ul>
+
+        <h3>WEDNESDAY — Value Day (Most Important Post of the Week)</h3>
+        <ul>
+            <li><strong>Format:</strong> Document Carousel (6-10 slides)</li>
+            <li><strong>Best Time:</strong> 10:00 AM IST</li>
+            <li><strong>Content:</strong> Technical deep-dive, design tips, mistake lists, checklists</li>
+            <li><strong>Why:</strong> Wednesday is the single strongest day on LinkedIn globally and 10 AM IST hits both India mid-morning AND UK/Europe early morning simultaneously. This is your most important post of the week. Put your best document here.</li>
+        </ul>
+
+        <h3>THURSDAY — Engagement Day</h3>
+        <ul>
+            <li><strong>Format:</strong> Photo + Story / Short Video / Case Study</li>
+            <li><strong>Best Time:</strong> 12:30 PM IST</li>
+            <li><strong>Content:</strong> Real work, prototypes, project showcases, team culture</li>
+            <li><strong>Why:</strong> Thursday 12:30 PM IST is your ideal "outside India" crossover window — it naturally catches UK morning + India lunch in one shot.</li>
+        </ul>
+
+        <h3>Weekly Schedule at a Glance</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Time (IST)</th>
+                    <th>Format</th>
+                    <th>Content Theme</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Tuesday</strong></td>
+                    <td>8:30 AM</td>
+                    <td>Text / Mini Carousel</td>
+                    <td>Bold opinion, hot take, industry insight</td>
+                </tr>
+                <tr>
+                    <td><strong>Wednesday</strong></td>
+                    <td>10:00 AM</td>
+                    <td>Document Carousel</td>
+                    <td>Technical deep-dive, checklist, design guide</td>
+                </tr>
+                <tr>
+                    <td><strong>Thursday</strong></td>
+                    <td>12:30 PM</td>
+                    <td>Photo / Video / Story</td>
+                    <td>Behind-the-scenes, case study, team, hiring</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+
+        <h2>Part 4: Content Pillars</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Pillar</th>
+                    <th>Share</th>
+                    <th>Format</th>
+                    <th>Example Topics</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Technical Education</td>
+                    <td>40%</td>
+                    <td>Document carousel</td>
+                    <td>PCB mistakes, BMS design, USB, thermal mgmt</td>
+                </tr>
+                <tr>
+                    <td>Company Story / BTS</td>
+                    <td>20%</td>
+                    <td>Photo or short video</td>
+                    <td>Lab footage, prototyping, testing rigs</td>
+                </tr>
+                <tr>
+                    <td>Industry Opinion</td>
+                    <td>20%</td>
+                    <td>Text post</td>
+                    <td>Edge AI vs cloud, hardware startup insights</td>
+                </tr>
+                <tr>
+                    <td>Case Studies</td>
+                    <td>10%</td>
+                    <td>Carousel or caption</td>
+                    <td>Problem to solution story</td>
+                </tr>
+                <tr>
+                    <td>Hiring / Culture</td>
+                    <td>10%</td>
+                    <td>Text or photo</td>
+                    <td>Open roles, team milestones, company wins</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+
+        <h2>Part 5: Hashtag Strategy</h2>
+        <p><strong>Formula: 2 Broad + 2 Niche + 1 Brand = Exactly 5 hashtags</strong></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Topic</th>
+                    <th>Hashtag Set</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PCB / Hardware</td>
+                    <td><span class="tag">#PCBDesign</span> <span class="tag">#EmbeddedSystems</span> <span class="tag">#HardwareDesign</span> <span class="tag">#SignalIntegrity</span> <span class="tag">#ZenionTechnologies</span></td>
+                </tr>
+                <tr>
+                    <td>IoT / Firmware</td>
+                    <td><span class="tag">#IoT</span> <span class="tag">#EmbeddedSystems</span> <span class="tag">#FirmwareDevelopment</span> <span class="tag">#EdgeAI</span> <span class="tag">#ZenionTechnologies</span></td>
+                </tr>
+                <tr>
+                    <td>Battery / BMS</td>
+                    <td><span class="tag">#BatteryManagementSystem</span> <span class="tag">#EmbeddedSystems</span> <span class="tag">#EV</span> <span class="tag">#PowerElectronics</span> <span class="tag">#ZenionTechnologies</span></td>
+                </tr>
+                <tr>
+                    <td>Thermal / Heat</td>
+                    <td><span class="tag">#ThermalManagement</span> <span class="tag">#PCBDesign</span> <span class="tag">#HardwareDesign</span> <span class="tag">#ElectronicsCooling</span> <span class="tag">#ZenionTechnologies</span></td>
+                </tr>
+                <tr>
+                    <td>Hiring</td>
+                    <td><span class="tag">#Hiring</span> <span class="tag">#EmbeddedEngineering</span> <span class="tag">#GujaratJobs</span> <span class="tag">#ElectronicsEngineering</span> <span class="tag">#ZenionTechnologies</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+
+        <h2>Part 6: Document/Carousel Slide Flow</h2>
+        <p><strong>Master Principle: Problem > Agitation > Insight > Solution > CTA</strong></p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Slide</th>
+                    <th>Role</th>
+                    <th>Goal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Slide 1</td>
+                    <td>HOOK (Cover)</td>
+                    <td>Stop the scroll — bold problem statement</td>
+                </tr>
+                <tr>
+                    <td>Slide 2</td>
+                    <td>THE PROBLEM</td>
+                    <td>"Yes, this is exactly my problem"</td>
+                </tr>
+                <tr>
+                    <td>Slide 3</td>
+                    <td>AGITATION</td>
+                    <td>Raises the stakes — why it costs you more</td>
+                </tr>
+                <tr>
+                    <td>Slide 4</td>
+                    <td>INSIGHT 1</td>
+                    <td>First aha moment — the save/screenshot slide</td>
+                </tr>
+                <tr>
+                    <td>Slide 5</td>
+                    <td>INSIGHT 2</td>
+                    <td>Deeper dive — framework or decision tree</td>
+                </tr>
+                <tr>
+                    <td>Slide 6</td>
+                    <td>MISTAKES</td>
+                    <td>Most saveable slide — engineers love mistake lists</td>
+                </tr>
+                <tr>
+                    <td>Slide 7</td>
+                    <td>ZENION ANGLE</td>
+                    <td>Soft brand connection — how Zenion solves this</td>
+                </tr>
+                <tr>
+                    <td>Slide 8</td>
+                    <td>CTA</td>
+                    <td>Tell viewer exactly what to do next</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Slide Design Rules</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Element</th>
+                    <th>Rule</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Slides per document</td>
+                    <td>6-10 max</td>
+                </tr>
+                <tr>
+                    <td>Text per slide</td>
+                    <td>Max 40 words</td>
+                </tr>
+                <tr>
+                    <td>Headline font</td>
+                    <td>28-36pt minimum</td>
+                </tr>
+                <tr>
+                    <td>Body font</td>
+                    <td>16-18pt minimum</td>
+                </tr>
+                <tr>
+                    <td>Visuals</td>
+                    <td>Every slide needs at least 1 icon/diagram/image</td>
+                </tr>
+                <tr>
+                    <td>Branding</td>
+                    <td>Zenion logo on EVERY slide — bottom corner</td>
+                </tr>
+                <tr>
+                    <td>Colors</td>
+                    <td>Max 2-3 brand colors</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Proven Cover Headline Formulas</h3>
+        <ul>
+            <li>"Most [X] don't fail because of [obvious reason]. They fail because of [real reason]."</li>
+            <li>"[Number] [Topic] Mistakes That Engineers Make After Production."</li>
+            <li>"[Topic] is 10% [thing] and 90% [surprising thing]." — Already proven on your page!</li>
+            <li>"You're Designing [X] Wrong. Here's the Framework We Use."</li>
+            <li>"The [Topic] Decision That Costs You the Most — Nobody Talks About It."</li>
+        </ul>
+
+        <hr>
+
+        <h2>Part 7: Caption Writing Framework</h2>
+
+        <h3>Tuesday — Text Post Structure</h3>
+        <p>Line 1: ONE bold/controversial hook (never start with "We" or "I am pleased to")</p>
+        <p>Lines 2-4: 3 short supporting points using arrows or dashes</p>
+        <p>Line 5: Bridge to our expertise (1 line)</p>
+        <p>Line 6: DIRECT question to audience</p>
+        <p>5 hashtags</p>
+
+        <h3>Wednesday — Document Post Caption Structure</h3>
+        <p>Line 1: Problem statement hook ("Here's what kills most [X] designs")</p>
+        <p>Lines 2-3: Why it matters — the stakes</p>
+        <p>Line 4: Tease a specific slide ("Slide 4 is the one to save")</p>
+        <p>Line 5: Direct question / CTA</p>
+        <p>5 hashtags</p>
+
+        <h3>Thursday — Story/Visual Post Structure</h3>
+        <p>Line 1: What you're showing + why it matters</p>
+        <p>Lines 2-3: Brief story or context (2-3 lines max)</p>
+        <p>Line 4: Lesson or insight from it</p>
+        <p>Line 5: Question to audience</p>
+        <p>5 hashtags</p>
+
+        <h3>Caption Rules</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rule</th>
+                    <th>Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Never start with "We"</td>
+                    <td>Reads as a corporate ad — instant scroll-past</td>
+                </tr>
+                <tr>
+                    <td>Never start with "I am pleased to..."</td>
+                    <td>Corporate and passive</td>
+                </tr>
+                <tr>
+                    <td>Always use line breaks</td>
+                    <td>No paragraph walls — LinkedIn is a scroll feed</td>
+                </tr>
+                <tr>
+                    <td>Tease one specific slide</td>
+                    <td>Forces document swipes</td>
+                </tr>
+                <tr>
+                    <td>One question only</td>
+                    <td>Multiple questions = nobody answers any</td>
+                </tr>
+                <tr>
+                    <td>Max 1,300 characters</td>
+                    <td>Engagement drops sharply after this</td>
+                </tr>
+                <tr>
+                    <td>No external links in caption</td>
+                    <td>LinkedIn suppresses these posts</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+
+        <h2>Part 8: Team Engagement Protocol</h2>
+        
+        <h3>Within 60 Minutes of Every Post Going Live</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th>Who</th>
+                    <th>Timing</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>React to the post</td>
+                    <td>Every team member</td>
+                    <td>Within 30 minutes</td>
+                </tr>
+                <tr>
+                    <td>Comment (real thought, not "great post")</td>
+                    <td>Min 2 team members</td>
+                    <td>Within 60 minutes</td>
+                </tr>
+                <tr>
+                    <td>Reshare to personal profile + 1 personal line</td>
+                    <td>Founder</td>
+                    <td>Within 60 minutes</td>
+                </tr>
+                <tr>
+                    <td>Reply to all incoming comments</td>
+                    <td>Page manager</td>
+                    <td>Within 2 hours</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Daily Routine (15 min/day — Founder or Page Manager)</h3>
+        <p><strong>Morning (10 min):</strong></p>
+        <ul>
+            <li>Comment on 5 external posts in our niche from personal profile</li>
+            <li>React to posts from our followers to build reciprocity</li>
+        </ul>
+        <p><strong>Evening (5 min):</strong></p>
+        <ul>
+            <li>Reply to all comments on Zenion posts</li>
+            <li>Check notifications — follow back relevant engineers/companies</li>
+        </ul>
+
+        <hr>
+
+        <h2>Part 9: 30-60-90 Day Targets</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Timeline</th>
+                    <th>Followers</th>
+                    <th>Avg Impressions/Post</th>
+                    <th>Comments/Post</th>
+                    <th>Reposts/Post</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Now (May 2026)</strong></td>
+                    <td>392</td>
+                    <td>350-400</td>
+                    <td>Less than 1</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td><strong>30 Days</strong></td>
+                    <td>800-1,000</td>
+                    <td>800-1,200</td>
+                    <td>5-10</td>
+                    <td>2-5</td>
+                </tr>
+                <tr>
+                    <td><strong>60 Days</strong></td>
+                    <td>1,200-1,500</td>
+                    <td>1,000-1,500</td>
+                    <td>8-15</td>
+                    <td>5-10</td>
+                </tr>
+                <tr>
+                    <td><strong>90 Days</strong></td>
+                    <td>2,000+</td>
+                    <td>1,500-3,000</td>
+                    <td>10+</td>
+                    <td>10+</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+
+        <h2>Part 10: Monthly Content Calendar</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Week</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Week 1</td>
+                    <td>Industry opinion / hot take</td>
+                    <td>Technical deep-dive carousel</td>
+                    <td>Behind-the-scenes / lab</td>
+                </tr>
+                <tr>
+                    <td>Week 2</td>
+                    <td>"Common mistake" post</td>
+                    <td>Design checklist carousel</td>
+                    <td>Case study / project showcase</td>
+                </tr>
+                <tr>
+                    <td>Week 3</td>
+                    <td>Trend / future of industry</td>
+                    <td>How-to guide carousel</td>
+                    <td>Team / hiring / culture post</td>
+                </tr>
+                <tr>
+                    <td>Week 4</td>
+                    <td>Question / poll to audience</td>
+                    <td>Best-performing topic repeat</td>
+                    <td>Client problem to solution story</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+
+        <h2>Immediate Action Checklist (This Week)</h2>
+        
+        <h3>Page Setup (One-Time)</h3>
+        <ul class="checkbox-list">
+            <li><input type="checkbox"> Complete all missing page fields — tagline, specialties, about section</li>
+            <li><input type="checkbox"> Fix the website CTA button pointing to zeniontechnologies.com</li>
+            <li><input type="checkbox"> Add 5-8 real competitors in Analytics Competitors tab</li>
+            <li><input type="checkbox"> Create the Zenion Technologies LinkedIn Newsletter</li>
+        </ul>
+
+        <h3>Team Setup (One-Time)</h3>
+        <ul class="checkbox-list">
+            <li><input type="checkbox"> Every team member follows page and turns on notifications</li>
+            <li><input type="checkbox"> Founder commits to daily 15-minute engagement routine</li>
+            <li><input type="checkbox"> Assign one person as dedicated page manager/content lead</li>
+        </ul>
+
+        <h3>Ongoing (Every Post)</h3>
+        <ul class="checkbox-list">
+            <li><input type="checkbox"> Post goes live at correct IST time (Tue 8:30 / Wed 10:00 / Thu 12:30)</li>
+            <li><input type="checkbox"> Every team member reacts + comments within 60 minutes</li>
+            <li><input type="checkbox"> Founder reshares to personal profile with 1-line personal take</li>
+            <li><input type="checkbox"> Caption ends with a direct, specific question</li>
+            <li><input type="checkbox"> Exactly 5 hashtags used — no more, no less</li>
+            <li><input type="checkbox"> Page manager replies to all comments within 2 hours</li>
+        </ul>
+
+        <hr>
+
+        <h2>TL;DR — The 5 Most Important Things Right Now</h2>
+        <ol>
+            <li><strong>Post Tuesday-Wednesday-Thursday every week</strong> — no gaps, no excuses</li>
+            <li><strong>End every post with a direct question</strong> — this is what drives comments</li>
+            <li><strong>Team engagement in the first 60 minutes</strong> — everyone reacts + comments when post goes live</li>
+            <li><strong>Complete the company page</strong> — fix the CTA button, fill all missing fields</li>
+            <li><strong>Founder reshares every post</strong> — personal profiles have 5-10x more organic reach</li>
+        </ol>
+
+        <hr>
+
+        <blockquote>
+            The growth signal is already there — 289 new followers in 30 days at +191.9% is strong. The algorithm is responding. Now it's time to convert that reach into community by driving comments, reposts, and consistent high-quality content. Double down on what's working (document carousels) and add the engagement layer that's currently missing.
+        </blockquote>
+
+        <hr>
+
+        <p><em>Document prepared for internal team use — Zenion Technologies | May 2026</em></p>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const h = document.documentElement;
+            const t = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            h.setAttribute('data-theme', t);
+        }
+    </script>
+</body>
+</html>
