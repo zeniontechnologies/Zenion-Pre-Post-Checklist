@@ -1371,12 +1371,37 @@ Please reshare with your personal take. Thanks!</pre>
     </div>
     <script>
         function toggleTheme() { const h = document.documentElement; const t = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; h.setAttribute('data-theme', t); const btn = document.querySelector('.theme-toggle'); btn.innerHTML = t === 'dark' ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>' : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>' }
-        function toggle(el) { el.classList.toggle('checked'); updateProgress() }
+        function toggle(el) { el.classList.toggle('checked'); updateProgress(); saveState(); }
         function setActive(el) { document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active')); el.classList.add('active') }
         function updateProgress() { const all = document.querySelectorAll('.check-item'); const done = document.querySelectorAll('.check-item.checked'); const total = all.length; const checked = done.length; const pct = total ? Math.round(checked / total * 100) : 0; document.getElementById('prog-count').textContent = checked + ' / ' + total; document.getElementById('prog-bar').style.width = pct + '%'; document.getElementById('prog-pct').textContent = pct + '% complete'; for (let i = 1; i <= 8; i++) { const sAll = document.querySelectorAll('[data-section="' + i + '"]'); const sDone = document.querySelectorAll('[data-section="' + i + '"].checked'); const navCount = document.getElementById('nc-' + i); const secCount = document.getElementById('sc-' + i); if (navCount) navCount.textContent = sDone.length + '/' + sAll.length; if (secCount) secCount.textContent = sDone.length + '/' + sAll.length + ' done'; const navItem = document.querySelector('[href="#s' + i + '"]'); if (navItem) { navItem.classList.remove('done'); if (sDone.length === sAll.length && sAll.length > 0) navItem.classList.add('done') } } const banner = document.getElementById('done-banner'); if (pct === 100) banner.classList.add('visible'); else banner.classList.remove('visible') }
-        function resetAll() { if (!confirm('Reset all checkboxes?')) return; document.querySelectorAll('.check-item').forEach(el => el.classList.remove('checked')); updateProgress() }
+        function resetAll() { if (!confirm('Reset all checkboxes?')) return; document.querySelectorAll('.check-item').forEach(el => el.classList.remove('checked')); updateProgress(); saveState(); }
         async function copyReadyMsg() { const msg = document.getElementById('team-msg').innerText; const btn = document.getElementById('copyBtn'); try { if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(msg) } else { const ta = document.createElement('textarea'); ta.value = msg; ta.style.position = 'fixed'; ta.style.left = '-9999px'; document.body.appendChild(ta); ta.focus(); ta.select(); document.execCommand('copy'); document.body.removeChild(ta) } btn.textContent = '✓ Copied!'; setTimeout(() => { btn.textContent = '📋 Copy Team Alert' }, 1800) } catch (e) { btn.textContent = 'Copy manually'; setTimeout(() => { btn.textContent = '📋 Copy Team Alert' }, 1800); alert('Copy failed on this browser. Please copy the message manually from the Team Alert section.') } }
-        updateProgress();
+        
+        function saveState() {
+            const items = document.querySelectorAll('.check-item');
+            const state = {};
+            items.forEach(item => {
+                const label = item.querySelector('.item-label').innerText;
+                state[label] = item.classList.contains('checked');
+            });
+            localStorage.setItem('checklistState', JSON.stringify(state));
+        }
+
+        function loadState() {
+            const items = document.querySelectorAll('.check-item');
+            const state = JSON.parse(localStorage.getItem('checklistState'));
+            if (state) {
+                items.forEach(item => {
+                    const label = item.querySelector('.item-label').innerText;
+                    if (state[label]) {
+                        item.classList.add('checked');
+                    }
+                });
+            }
+            updateProgress();
+        }
+
+        loadState();
     </script>
 </body>
 
