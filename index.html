@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenion Pre-Post Checklist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root,
+        [data-theme="light"] {
+            --color-bg: #f7f6f2;
+            --color-surface: #f9f8f5;
+            --color-surface-2: #ffffff;
+            --color-surface-offset: #f0ede8;
+            --color-border: #dcd9d5;
+            --color-divider: #e8e5e0;
+            --color-text: #1a1917;
+            --color-text-muted: #6b6a67;
+            --color-text-faint: #a8a7a3;
+            --color-primary: #01696f;
+            --color-primary-hover: #0c4e54;
+            --color-primary-highlight: #cedcd8;
+            --color-success: #437a22;
+            --color-success-highlight: #d4dfcc;
+            --color-warning: #964219;
+            --color-warning-highlight: #ddcfc6;
+            --color-error: #a12c7b;
+            --color-error-highlight: #e0ced7;
+            --color-orange: #da7101;
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-full: 9999px;
+            --shadow-sm: 0 1px 3px oklch(0.2 0.01 80/0.08);
+            --font-body: 'Inter', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+            --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+            --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+            --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1)
+        }
+
+        [data-theme="dark"] {
+            --color-bg: #111110;
+            --color-surface: #1a1917;
+            --color-surface-2: #201f1d;
+            --color-surface-offset: #252421;
+            --color-border: #2e2d2b;
+            --color-divider: #262523;
+            --color-text: #d4d3d0;
+            --color-text-muted: #78776f;
+            --color-text-faint: #504f4d;
+            --color-primary: #4f98a3;
+            --color-primary-hover: #227f8b;
+            --color-primary-highlight: #1e3638;
+            --color-success: #6daa45;
+            --color-success-highlight: #243318;
+            --color-warning: #bb653b;
+            --color-warning-highlight: #3a2416;
+            --color-error: #d163a7;
+            --color-error-highlight: #2e1628;
+            --color-orange: #fdab43;
+            --shadow-sm: 0 1px 3px oklch(0 0 0/0.25)
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth
+        }
+
+        body {
+            min-height: 100dvh;
+            font-family: var(--font-body);
+            font-size: var(--text-sm);
+            color: var(--color-text);
+            background: var(--color-bg)
+        }
+
+        button {
+            cursor: pointer;
+            background: none;
+            border: none;
+            font: inherit;
+            color: inherit
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto
+        }
+
+        .app {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100dvh
+        }
+
+        @media(max-width:768px) {
+            .app {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .sidebar {
+            background: var(--color-surface);
+            border-right: 1px solid var(--color-border);
+            padding: var(--space-6);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+            position: sticky;
+            top: 0;
+            height: 100dvh;
+            overflow-y: auto
+        }
+
+        @media(max-width:768px) {
+            .sidebar {
+                position: static;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--color-border)
+            }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3)
+        }
+
+        .logo-mark {
+            width: 50px;
+            height: 50px;
+            object-fit: contain
+        }
+
+        .logo-text {
+            font-size: var(--text-sm);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--color-text)
+        }
+
+        .logo-sub {
+            font-size: var(--text-xs);
+            color: var(--color-text-faint)
+        }
+
+        .progress-card {
+            background: var(--color-surface-offset);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4)
+        }
+
+        .progress-label {
+            font-size: var(--text-xs);
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-2);
+            text-transform: uppercase;
+            letter-spacing: 0.06em
+        }
+
+        .progress-count {
+            font-size: var(--text-lg);
+            font-weight: 700;
+            font-family: var(--font-mono);
+            color: var(--color-text);
+            margin-bottom: var(--space-3)
+        }
+
+        .progress-bar-wrap {
+            height: 6px;
+            background: var(--color-border);
+            border-radius: var(--radius-full);
+            overflow: hidden
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--color-primary);
+            border-radius: var(--radius-full);
+            transition: width .4s cubic-bezier(.16, 1, .3, 1)
+        }
+
+        .progress-pct {
+            font-size: var(--text-xs);
+            color: var(--color-primary);
+            font-family: var(--font-mono);
+            margin-top: var(--space-2);
+            font-weight: 600
+        }
+
+        .nav-sections {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-1);
+            flex: 1
+        }
+
+        .nav-label {
+            font-size: var(--text-xs);
+            color: var(--color-text-faint);
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            padding: var(--space-3) var(--space-3) var(--space-1);
+            font-weight: 600
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: background var(--transition), color var(--transition);
+            color: var(--color-text-muted);
+            font-size: var(--text-xs);
+            text-decoration: none
+        }
+
+        .nav-item:hover {
+            background: var(--color-surface-offset);
+            color: var(--color-text)
+        }
+
+        .nav-item.active {
+            background: var(--color-primary-highlight);
+            color: var(--color-primary)
+        }
+
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: var(--radius-full);
+            background: var(--color-border);
+            flex-shrink: 0;
+            transition: background var(--transition)
+        }
+
+        .nav-item.active .nav-dot {
+            background: var(--color-primary)
+        }
+
+        .nav-item.done .nav-dot {
+            background: var(--color-success)
+        }
+
+        .nav-count {
+            margin-left: auto;
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            color: var(--color-text-faint)
+        }
+
+        .sidebar-actions {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2)
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-md);
+            font-size: var(--text-xs);
+            font-weight: 600;
+            transition: all var(--transition);
+            cursor: pointer;
+            border: none
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: #fff
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-hover)
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--color-text-muted);
+            border: 1px solid var(--color-border)
+        }
+
+        .btn-ghost:hover {
+            background: var(--color-surface-offset);
+            color: var(--color-text);
+            border-color: var(--color-text-muted)
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-4) var(--space-8);
+            border-bottom: 1px solid var(--color-border);
+            background: var(--color-surface);
+            position: sticky;
+            top: 0;
+            z-index: 10
+        }
+
+        @media(max-width:768px) {
+            .topbar {
+                padding: var(--space-4)
+            }
+        }
+
+        .topbar-title {
+            font-size: var(--text-base);
+            font-weight: 700
+        }
+
+        .topbar-meta {
+            font-size: var(--text-xs);
+            color: var(--color-text-muted)
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3)
+        }
+
+        .theme-toggle {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-surface-offset);
+            color: var(--color-text-muted)
+        }
+
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            padding: var(--space-8);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-8)
+        }
+
+        @media(max-width:768px) {
+            .content {
+                padding: var(--space-4);
+                gap: var(--space-6)
+            }
+        }
+
+        .section {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm)
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-4) var(--space-5);
+            border-bottom: 1px solid var(--color-border);
+            background: var(--color-surface-2)
+        }
+
+        .section-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0
+        }
+
+        .section-title {
+            font-size: var(--text-sm);
+            font-weight: 700
+        }
+
+        .section-subtitle {
+            font-size: var(--text-xs);
+            color: var(--color-text-muted)
+        }
+
+        .section-check-count {
+            margin-left: auto;
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            color: var(--color-text-faint);
+            white-space: nowrap
+        }
+
+        .section-body {
+            padding: var(--space-2)
+        }
+
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-3);
+            padding: var(--space-3) var(--space-4);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: background var(--transition);
+            user-select: none;
+            border: 1px solid transparent
+        }
+
+        .check-item:hover {
+            background: var(--color-surface-offset)
+        }
+
+        .check-item.checked {
+            background: color-mix(in oklch, var(--color-success) 6%, var(--color-surface))
+        }
+
+        .check-item.checked .item-text {
+            color: var(--color-text-muted);
+            text-decoration: line-through;
+            text-decoration-color: var(--color-text-faint)
+        }
+
+        .check-box {
+            width: 20px;
+            height: 20px;
+            border-radius: var(--radius-sm);
+            border: 2px solid var(--color-border);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition);
+            margin-top: 1px
+        }
+
+        .check-item.checked .check-box {
+            background: var(--color-success);
+            border-color: var(--color-success)
+        }
+
+        .check-item.critical:not(.checked) .check-box {
+            border-color: var(--color-error)
+        }
+
+        .check-icon {
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            transition: opacity var(--transition)
+        }
+
+        .check-item.checked .check-icon {
+            opacity: 1
+        }
+
+        .item-text {
+            flex: 1
+        }
+
+        .item-label {
+            font-size: var(--text-sm);
+            color: var(--color-text);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            flex-wrap: wrap
+        }
+
+        .item-desc {
+            font-size: var(--text-xs);
+            color: var(--color-text-muted);
+            margin-top: var(--space-1);
+            line-height: 1.5
+        }
+
+        .badge {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            display: inline-flex
+        }
+
+        .badge-critical {
+            background: var(--color-error-highlight);
+            color: var(--color-error)
+        }
+
+        .badge-tip {
+            background: var(--color-primary-highlight);
+            color: var(--color-primary)
+        }
+
+        .badge-warn {
+            background: var(--color-warning-highlight);
+            color: var(--color-warning)
+        }
+
+        .ref-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: var(--text-xs)
+        }
+
+        .ref-table th {
+            text-align: left;
+            color: var(--color-text-muted);
+            font-weight: 600;
+            padding: var(--space-2) var(--space-4);
+            border-bottom: 1px solid var(--color-border);
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            font-size: 10px
+        }
+
+        .ref-table td {
+            padding: var(--space-2) var(--space-4);
+            border-bottom: 1px solid var(--color-divider);
+            vertical-align: top
+        }
+
+        .ref-table tr:last-child td {
+            border-bottom: none
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            background: var(--color-surface-offset);
+            color: var(--color-text-muted);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid var(--color-border)
+        }
+
+        .quick-ref {
+            background: var(--color-surface-offset);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4) var(--space-5);
+            font-size: var(--text-xs)
+        }
+
+        .quick-ref-title {
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: var(--space-3);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2)
+        }
+
+        .quick-ref pre {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--color-text-muted);
+            line-height: 1.7;
+            white-space: pre-wrap
+        }
+
+        .timing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-3)
+        }
+
+        @media(max-width:640px) {
+            .timing-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .timing-card {
+            background: var(--color-surface-offset);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4);
+            text-align: center
+        }
+
+        .timing-day {
+            font-weight: 700;
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-1)
+        }
+
+        .timing-time {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            color: var(--color-primary);
+            margin-bottom: var(--space-2)
+        }
+
+        .timing-type {
+            font-size: var(--text-xs);
+            color: var(--color-text-muted)
+        }
+
+        .alert {
+            display: flex;
+            gap: var(--space-3);
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            font-size: var(--text-xs);
+            line-height: 1.6
+        }
+
+        .alert-warning {
+            background: var(--color-warning-highlight);
+            border: 1px solid color-mix(in oklch, var(--color-warning) 25%, transparent)
+        }
+
+        .alert-warning .alert-icon {
+            color: var(--color-warning)
+        }
+
+        .done-banner {
+            display: none;
+            background: var(--color-success-highlight);
+            border: 1px solid color-mix(in oklch, var(--color-success) 30%, transparent);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-3)
+        }
+
+        .done-banner.visible {
+            display: flex
+        }
+
+        .done-emoji {
+            font-size: 40px
+        }
+
+        .done-title {
+            font-size: var(--text-lg);
+            font-weight: 700;
+            color: var(--color-success)
+        }
+
+        .done-sub {
+            font-size: var(--text-xs);
+            color: var(--color-text-muted)
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-border);
+            border-radius: 999px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="logo"><img class="logo-mark"
+                    src="https://github.com/zeniontechnologies/Logo/blob/main/ZT_Navy_White%20-DropShadow.png?raw=true"
+                    alt="Zenion Technologies logo">
+                <div>
+                    <div class="logo-text">Zenion Technologies</div>
+                    <div class="logo-sub">LinkedIn Pre-Post Checklist</div>
+                </div>
+            </div>
+            <div class="progress-card">
+                <div class="progress-label">Overall Progress</div>
+                <div class="progress-count" id="prog-count">0 / 0</div>
+                <div class="progress-bar-wrap">
+                    <div class="progress-bar" id="prog-bar" style="width:0%"></div>
+                </div>
+                <div class="progress-pct" id="prog-pct">0% complete</div>
+            </div>
+            <nav class="nav-sections">
+                <div class="nav-label">Sections</div><a class="nav-item active" href="#s1"
+                    onclick="setActive(this)"><span class="nav-dot"></span> Caption Quality <span class="nav-count"
+                        id="nc-1">0</span></a><a class="nav-item" href="#s2" onclick="setActive(this)"><span
+                        class="nav-dot"></span> Hashtag Check <span class="nav-count" id="nc-2">0</span></a><a
+                    class="nav-item" href="#s3" onclick="setActive(this)"><span class="nav-dot"></span> Carousel /
+                    Document <span class="nav-count" id="nc-3">0</span></a><a class="nav-item" href="#s4"
+                    onclick="setActive(this)"><span class="nav-dot"></span> Timing <span class="nav-count"
+                        id="nc-4">0</span></a><a class="nav-item" href="#s5" onclick="setActive(this)"><span
+                        class="nav-dot"></span> Team Alert <span class="nav-count" id="nc-5">0</span></a><a
+                    class="nav-item" href="#s6" onclick="setActive(this)"><span class="nav-dot"></span> After Publishing
+                    <span class="nav-count" id="nc-6">0</span></a><a class="nav-item" href="#s7"
+                    onclick="setActive(this)"><span class="nav-dot"></span> Common Mistakes <span class="nav-count"
+                        id="nc-7">0</span></a><a class="nav-item" href="#s8" onclick="setActive(this)"><span
+                        class="nav-dot"></span> Self-Review (30s) <span class="nav-count" id="nc-8">0</span></a>
+            </nav>
+            <div class="sidebar-actions"><button class="btn btn-ghost" onclick="resetAll()">↺ Reset
+                    Checklist</button><button class="btn btn-primary" id="copyBtn" onclick="copyReadyMsg()">📋 Copy Team
+                    Alert</button></div>
+        </aside>
+        <main class="main">
+            <div class="topbar">
+                <div>
+                    <div class="topbar-title">Pre-Post Checklist</div>
+                    <div class="topbar-meta">Complete before every LinkedIn post goes live</div>
+                </div>
+                <div class="topbar-right"><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"
+                        data-theme-toggle><svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg></button></div>
+            </div>
+            <div class="content">
+                <div class="done-banner" id="done-banner">
+                    <div class="done-emoji">🚀</div>
+                    <div class="done-title">You're Ready to Post!</div>
+                    <div class="done-sub">All checks passed. Hit publish and alert the team within 5 minutes.</div>
+                </div>
+
+                <div class="section" id="s1">
+                    <div class="section-header">
+                        <div class="section-icon"
+                            style="background:var(--color-primary-highlight);color:var(--color-primary);">✍️</div>
+                        <div>
+                            <div class="section-title">Step 1 Caption Quality</div>
+                            <div class="section-subtitle">Check every caption element before posting</div>
+                        </div>
+                        <div class="section-check-count" id="sc-1"></div>
+                    </div>
+                    <div class="section-body">
+                        <div class="check-item critical" data-section="1" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Strong hook in line 1 <span
+                                        class="badge badge-critical">Critical</span></div>
+                                <div class="item-desc">First line creates tension, curiosity, or a bold opinion. Does
+                                    NOT start with "We", "I am pleased to", or a generic statement.</div>
+                            </div>
+                        </div>
+                        <div class="check-item critical" data-section="1" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Line breaks used throughout <span
+                                        class="badge badge-critical">Critical</span></div>
+                                <div class="item-desc">Every 1–2 lines has a blank line break. No paragraph walls. Easy
+                                    to scan on mobile.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="1" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Specific insight or problem</div>
+                                <div class="item-desc">The post teaches something concrete, not a general truth everyone
+                                    already knows.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="1" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Slide tease included (if carousel) <span
+                                        class="badge badge-tip">Tip</span></div>
+                                <div class="item-desc">Caption mentions a specific slide: "Slide 3 is the one to save."
+                                    Forces document swipes.</div>
+                            </div>
+                        </div>
+                        <div class="check-item critical" data-section="1" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Ends with ONE direct question <span
+                                        class="badge badge-critical">Critical</span></div>
+                                <div class="item-desc">Not "Let us know your thoughts." A specific, answerable question
+                                    like "Which of these have you faced in your last PCB design?"</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="1" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">No self-promo sentence at the end</div>
+                                <div class="item-desc">Remove lines like "At Zenion Technologies, we focus on reliable
+                                    embedded solutions." It kills momentum right before the CTA.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="1" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Caption under 1,300 characters</div>
+                                <div class="item-desc">Engagement drops sharply after this limit. Count if you're
+                                    unsure.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="1" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">No external link in caption <span class="badge badge-warn">Watch
+                                        out</span></div>
+                                <div class="item-desc">Put the link in the first comment instead, right after
+                                    publishing.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section" id="s2">
+                    <div class="section-header">
+                        <div class="section-icon" style="background:#e6f0e0;color:var(--color-success);">#</div>
+                        <div>
+                            <div class="section-title">Step 2 Hashtag Check</div>
+                            <div class="section-subtitle">Exactly 5 hashtags always</div>
+                        </div>
+                        <div class="section-check-count" id="sc-2"></div>
+                    </div>
+                    <div class="section-body">
+                        <div class="check-item critical" data-section="2" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Exactly 5 hashtags <span
+                                        class="badge badge-critical">Critical</span></div>
+                                <div class="item-desc">Not 4, not 6, not 15. Exactly 5.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="2" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Formula: 2 Broad + 2 Niche + 1 Brand</div>
+                                <div class="item-desc">Always ends with #ZenionTechnologies.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="2" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">No generic-only tags like #Technology #Innovation</div>
+                                <div class="item-desc">Always pair with niche engineering tags.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="2" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Hashtags placed at end of caption</div>
+                                <div class="item-desc">Not scattered in the middle of the caption body.</div>
+                            </div>
+                        </div>
+                        <div style="padding:var(--space-3) var(--space-4);">
+                            <table class="ref-table">
+                                <thead>
+                                    <tr>
+                                        <th>Topic</th>
+                                        <th>Use These 5 Hashtags</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>PCB / Hardware</strong></td>
+                                        <td><span class="tag">#PCBDesign</span> <span
+                                                class="tag">#EmbeddedSystems</span> <span
+                                                class="tag">#HardwareDesign</span> <span
+                                                class="tag">#SignalIntegrity</span> <span
+                                                class="tag">#ZenionTechnologies</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>IoT / Firmware</strong></td>
+                                        <td><span class="tag">#IoT</span> <span class="tag">#EmbeddedSystems</span>
+                                            <span class="tag">#FirmwareDevelopment</span> <span
+                                                class="tag">#EdgeAI</span> <span class="tag">#ZenionTechnologies</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Battery / BMS</strong></td>
+                                        <td><span class="tag">#BatteryManagementSystem</span> <span
+                                                class="tag">#EmbeddedSystems</span> <span class="tag">#EV</span> <span
+                                                class="tag">#PowerElectronics</span> <span
+                                                class="tag">#ZenionTechnologies</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section" id="s3">
+                    <div class="section-header">
+                        <div class="section-icon" style="background:#fde8d0;color:var(--color-orange);">📄</div>
+                        <div>
+                            <div class="section-title">Step 3 Document / Carousel Check</div>
+                            <div class="section-subtitle">Only for document/carousel posts skip if text-only</div>
+                        </div>
+                        <div class="section-check-count" id="sc-3"></div>
+                    </div>
+                    <div class="section-body">
+                        <div class="check-item critical" data-section="3" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Slide 1 cover has a HOOK headline <span
+                                        class="badge badge-critical">Critical</span></div>
+                                <div class="item-desc">Provocative statement or bold problem claim. Max 8 words.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="3" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Every slide has at least 1 visual</div>
+                                <div class="item-desc">No text-only slides.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="3" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Max 40 words per slide</div>
+                                <div class="item-desc">If a slide has more text, split it into two slides.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="3" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Slide count is 6–10</div>
+                                <div class="item-desc">Sweet spot is 7–9 slides.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="3" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Mistakes/Red Flags slide included <span
+                                        class="badge badge-tip">Tip</span></div>
+                                <div class="item-desc">Most saved and shared slide type.</div>
+                            </div>
+                        </div>
+                        <div class="check-item critical" data-section="3" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Last slide has a clear CTA <span
+                                        class="badge badge-critical">Critical</span></div>
+                                <div class="item-desc">Follow Zenion + DM or website. Not just a logo.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="3" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Zenion logo on every slide</div>
+                                <div class="item-desc">Bottom corner, small, consistent.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="3" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Uploaded as PDF and title HOOK or CTA</div>
+                                <div class="item-desc">LinkedIn renders PDF carousels best.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section" id="s4">
+                    <div class="section-header">
+                        <div class="section-icon"
+                            style="background:var(--color-primary-highlight);color:var(--color-primary);">⏰</div>
+                        <div>
+                            <div class="section-title">Step 4 Timing Check</div>
+                            <div class="section-subtitle">Right day, right time, every week</div>
+                        </div>
+                        <div class="section-check-count" id="sc-4"></div>
+                    </div>
+                    <div class="section-body" style="padding:var(--space-4);">
+                        <div class="timing-grid" style="margin-bottom:var(--space-4);">
+                            <div class="timing-card">
+                                <div class="timing-day">Tuesday</div>
+                                <div class="timing-time">8:30 AM IST</div>
+                                <div class="timing-type">Text / Opinion post</div>
+                            </div>
+                            <div class="timing-card"
+                                style="border-color:var(--color-primary);background:var(--color-primary-highlight);">
+                                <div class="timing-day" style="color:var(--color-primary);">Wednesday ⭐</div>
+                                <div class="timing-time">10:00 AM IST</div>
+                                <div class="timing-type">Document carousel best post</div>
+                            </div>
+                            <div class="timing-card">
+                                <div class="timing-day">Thursday</div>
+                                <div class="timing-time">12:30 PM IST</div>
+                                <div class="timing-type">Photo / Story / Case Study</div>
+                            </div>
+                        </div>
+                        <div class="check-item critical" data-section="4" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Posting on Tue / Wed / Thu only <span
+                                        class="badge badge-critical">Critical</span></div>
+                                <div class="item-desc">Avoid Saturday afternoon and Sunday.</div>
+                            </div>
+                        </div>
+                        <div class="check-item critical" data-section="4" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Posting at correct IST time <span
+                                        class="badge badge-critical">Critical</span></div>
+                                <div class="item-desc">Tue 8:30 / Wed 10:00 / Thu 12:30.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="4" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Not doubling up on the same day</div>
+                                <div class="item-desc">One post per day maximum.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section" id="s5">
+                    <div class="section-header">
+                        <div class="section-icon" style="background:#fde8d0;color:var(--color-orange);">📣</div>
+                        <div>
+                            <div class="section-title">Step 5 Team Alert</div>
+                            <div class="section-subtitle">Alert the team 5 minutes before publishing</div>
+                        </div>
+                        <div class="section-check-count" id="sc-5"></div>
+                    </div>
+                    <div class="section-body" style="padding:var(--space-4);">
+                        <div class="alert alert-warning" style="margin-bottom:var(--space-4);">
+                            <div class="alert-icon">⚠️</div>
+                            <div><strong>The Golden Hour:</strong> The first 60 minutes decide whether LinkedIn pushes
+                                your post wider. Team engagement here is non-negotiable.</div>
+                        </div>
+                        <div class="quick-ref" style="margin-bottom:var(--space-4);">
+                            <div class="quick-ref-title">📋 Copy this message for the team WhatsApp/Slack:</div>
+                            <pre id="team-msg">🚀 Zenion LinkedIn post going live at [TIME].
+Please react + comment within 60 minutes.
+Even 1 real line helps. Don't just like  leave a comment.
+Please reshare with your personal take. Thanks!</pre>
+                        </div>
+                        <div class="check-item critical" data-section="5" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Team notified in WhatsApp/Slack <span
+                                        class="badge badge-critical">Critical</span></div>
+                                <div class="item-desc">Send the message at least 5 minutes before the post goes live.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="5" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label"> Within 60 mins with 1 personal line.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="5" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">At least 2 team members committed to comment</div>
+                                <div class="item-desc">Not just react real comments.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section" id="s6">
+                    <div class="section-header">
+                        <div class="section-icon"
+                            style="background:var(--color-success-highlight);color:var(--color-success);">✅</div>
+                        <div>
+                            <div class="section-title">Step 6 After Publishing</div>
+                            <div class="section-subtitle">Complete in the first 60 minutes</div>
+                        </div>
+                        <div class="section-check-count" id="sc-6"></div>
+                    </div>
+                    <div class="section-body">
+                        <div class="check-item critical" data-section="6" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">All team members reacted <span
+                                        class="badge badge-critical">Critical</span></div>
+                                <div class="item-desc">Within 30 minutes.</div>
+                            </div>
+                        </div>
+                        <div class="check-item critical" data-section="6" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">At least 2 team members commented <span
+                                        class="badge badge-critical">Critical</span></div>
+                                <div class="item-desc">Real comments within 60 minutes.</div>
+                            </div>
+                        </div>
+                        <div class="check-item critical" data-section="6" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">reposted from ZT personal profile <span
+                                        class="badge badge-critical">Critical</span></div>
+                                <div class="item-desc">With 1 personal line.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="6" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Page manager monitoring comments</div>
+                                <div class="item-desc">Reply within 2 hours.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="6" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Post not edited after publishing</div>
+                                <div class="item-desc">Edits in the first hour can hurt distribution.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section" id="s7">
+                    <div class="section-header">
+                        <div class="section-icon"
+                            style="background:var(--color-error-highlight);color:var(--color-error);">❌</div>
+                        <div>
+                            <div class="section-title">Step 7 Common Mistakes Avoided?</div>
+                            <div class="section-subtitle">Verify none of these apply</div>
+                        </div>
+                        <div class="section-check-count" id="sc-7"></div>
+                    </div>
+                    <div class="section-body">
+                        <div class="check-item" data-section="7" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Caption does NOT start with “We are excited to share...”</div>
+                                <div class="item-desc">Rewrite corporate intros into bold hooks.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="7" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Caption is NOT a table of contents</div>
+                                <div class="item-desc">Lead with stakes, not “In this post, we covered...”</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="7" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Cover slide is NOT just an informational title</div>
+                                <div class="item-desc">It should be a hook, not a chapter heading.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="7" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Hashtag count is NOT 10+</div>
+                                <div class="item-desc">Stay at exactly 5.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="7" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Post does NOT end with multiple questions</div>
+                                <div class="item-desc">Ask one specific question only.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section" id="s8">
+                    <div class="section-header">
+                        <div class="section-icon"
+                            style="background:var(--color-primary-highlight);color:var(--color-primary);">🔍</div>
+                        <div>
+                            <div class="section-title">Step 8 30-Second Self-Review</div>
+                            <div class="section-subtitle">Read it out loud and answer these</div>
+                        </div>
+                        <div class="section-check-count" id="sc-8"></div>
+                    </div>
+                    <div class="section-body">
+                        <div class="check-item" data-section="8" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Would I stop scrolling for this first line?</div>
+                                <div class="item-desc">If not, rewrite the first line.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="8" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Does it make the reader feel something?</div>
+                                <div class="item-desc">Curiosity, recognition, or urgency.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="8" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Is there a clear reason to comment?</div>
+                                <div class="item-desc">A question, CTA, or clear prompt.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="8" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Is the cover slide a hook or a title?</div>
+                                <div class="item-desc">Change chapter headings into bold problem statements.</div>
+                            </div>
+                        </div>
+                        <div class="check-item" data-section="8" onclick="toggle(this)">
+                            <div class="check-box"><svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg></div>
+                            <div class="item-text">
+                                <div class="item-label">Have I notified the team yet?</div>
+                                <div class="item-desc">No team alert = no early engagement.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+    <script>
+        function toggleTheme() { const h = document.documentElement; const t = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; h.setAttribute('data-theme', t); const btn = document.querySelector('.theme-toggle'); btn.innerHTML = t === 'dark' ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>' : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>' }
+        function toggle(el) { el.classList.toggle('checked'); updateProgress() }
+        function setActive(el) { document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active')); el.classList.add('active') }
+        function updateProgress() { const all = document.querySelectorAll('.check-item'); const done = document.querySelectorAll('.check-item.checked'); const total = all.length; const checked = done.length; const pct = total ? Math.round(checked / total * 100) : 0; document.getElementById('prog-count').textContent = checked + ' / ' + total; document.getElementById('prog-bar').style.width = pct + '%'; document.getElementById('prog-pct').textContent = pct + '% complete'; for (let i = 1; i <= 8; i++) { const sAll = document.querySelectorAll('[data-section="' + i + '"]'); const sDone = document.querySelectorAll('[data-section="' + i + '"].checked'); const navCount = document.getElementById('nc-' + i); const secCount = document.getElementById('sc-' + i); if (navCount) navCount.textContent = sDone.length + '/' + sAll.length; if (secCount) secCount.textContent = sDone.length + '/' + sAll.length + ' done'; const navItem = document.querySelector('[href="#s' + i + '"]'); if (navItem) { navItem.classList.remove('done'); if (sDone.length === sAll.length && sAll.length > 0) navItem.classList.add('done') } } const banner = document.getElementById('done-banner'); if (pct === 100) banner.classList.add('visible'); else banner.classList.remove('visible') }
+        function resetAll() { if (!confirm('Reset all checkboxes?')) return; document.querySelectorAll('.check-item').forEach(el => el.classList.remove('checked')); updateProgress() }
+        async function copyReadyMsg() { const msg = document.getElementById('team-msg').innerText; const btn = document.getElementById('copyBtn'); try { if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(msg) } else { const ta = document.createElement('textarea'); ta.value = msg; ta.style.position = 'fixed'; ta.style.left = '-9999px'; document.body.appendChild(ta); ta.focus(); ta.select(); document.execCommand('copy'); document.body.removeChild(ta) } btn.textContent = '✓ Copied!'; setTimeout(() => { btn.textContent = '📋 Copy Team Alert' }, 1800) } catch (e) { btn.textContent = 'Copy manually'; setTimeout(() => { btn.textContent = '📋 Copy Team Alert' }, 1800); alert('Copy failed on this browser. Please copy the message manually from the Team Alert section.') } }
+        updateProgress();
+    </script>
+</body>
+
+</html>
